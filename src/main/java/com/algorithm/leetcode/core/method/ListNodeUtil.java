@@ -3,6 +3,8 @@ package com.algorithm.leetcode.core.method;
 import com.algorithm.leetcode.core.model.ListNode;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * 项目名称: algorithm-and-data-structure
  * 模块名称: com.algorithm.leetcode.core.method
@@ -23,6 +25,8 @@ public class ListNodeUtil {
      * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
      * 输出：7 -> 0 -> 8
      * 原因：342 + 465 = 807
+     *
+     * 考察核心是大数相加，不能先加起来，因为可能回溢出
      *
      * 难度级别：中等
      * 链表两数相加
@@ -51,6 +55,45 @@ public class ListNodeUtil {
         return root.next;
     }
 
+    /**
+     * 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+     *
+     * 给定一个链表: 1->2->3->4->5, 和 n = 2.
+     * 当删除了倒数第二个节点后，链表变为 1->2->3->5.
+     *
+     * 删除链表的倒数第N个节点
+     * @param head
+     * @param n
+     * @return
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (n<=0){
+            return head;
+        }
+        int size = 0;
+        ListNode tailNode = head;
+        for (;;){
+            size++;
+            if (tailNode.next==null){
+                break;
+            }
+            tailNode = tailNode.next;
+
+        }
+        int removeIndex = size - n;
+        if (removeIndex==0){
+            return head.next;
+        }
+        ListNode cusuor = head;
+        for (int i=0;i<size;i++){
+            if (i == removeIndex -1){
+                cusuor.next = cusuor.next.next;
+                return head;
+            }
+            cusuor = cusuor.next;
+        }
+        return head;
+    }
 
 
 }
