@@ -3,7 +3,7 @@ package com.algorithm.leetcode.core.method;
 import com.algorithm.leetcode.core.model.ListNode;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * 项目名称: algorithm-and-data-structure
@@ -110,16 +110,14 @@ public class ListNodeUtil {
         ListNode head = new ListNode(0);
         ListNode cusuor = head;
         while (l1!=null && l2!=null){
-            int val1 = l1!=null ? l1.val : 0;
-            int val2 = l2!=null ? l2.val : 0;
 
-            if (val1 < val2){
-                cusuor.next = new ListNode(val1);
+            if (l1.val < l2.val){
+                cusuor.next = new ListNode(l1.val);
                 if (l1!=null){l1 = l1.next;}
                 cusuor = cusuor.next;
                 continue;
             }else {
-                cusuor.next = new ListNode(val2);
+                cusuor.next = new ListNode(l2.val);
                 if (l2!=null){l2 = l2.next;}
                 cusuor = cusuor.next;
                 continue;
@@ -134,5 +132,58 @@ public class ListNodeUtil {
 
         return head.next;
     }
+
+    /**
+     * 合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
+     *
+     * 输入:
+     * [
+     *   1->4->5,
+     *   1->3->4,
+     *   2->6
+     * ]
+     * 输出: 1->1->2->3->4->4->5->6
+     *
+     * @param lists
+     * @return
+     */
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists.length == 0){
+            return null;
+        }
+        if (lists.length == 1){
+            return lists[0];
+        }
+        ListNode root = new ListNode(0);
+        ListNode curr = root;
+
+        PriorityQueue<ListNode> nodeQueue = new PriorityQueue<ListNode>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+                return o1.val - o2.val;
+            }
+        });
+
+        for (ListNode listNode: lists){
+            if (listNode==null){
+                continue;
+            }
+            nodeQueue.add(listNode);
+        }
+
+        while (!nodeQueue.isEmpty()){
+            ListNode node = nodeQueue.poll();
+            curr.next = node;
+            curr = curr.next;
+            if (node.next != null){
+                nodeQueue.add(node.next);
+            }
+        }
+
+        return root.next;
+    }
+
+
+
 
 }
