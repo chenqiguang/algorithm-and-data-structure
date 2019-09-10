@@ -95,5 +95,44 @@ public class ListNodeUtil {
         return head;
     }
 
+    /**
+     *
+     * 将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的.
+     * 输入：1->2->4, 1->3->4
+     * 输出：1->1->2->3->4->4
+     *
+     * 合并两个有序链表
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode(0);
+        ListNode cusuor = head;
+        while (l1!=null && l2!=null){
+            int val1 = l1!=null ? l1.val : 0;
+            int val2 = l2!=null ? l2.val : 0;
+
+            if (val1 < val2){
+                cusuor.next = new ListNode(val1);
+                if (l1!=null){l1 = l1.next;}
+                cusuor = cusuor.next;
+                continue;
+            }else {
+                cusuor.next = new ListNode(val2);
+                if (l2!=null){l2 = l2.next;}
+                cusuor = cusuor.next;
+                continue;
+            }
+        }
+
+        if (l2==null){
+            cusuor.next = l1;
+        }else {
+            cusuor.next = l2;
+        }
+
+        return head.next;
+    }
 
 }
