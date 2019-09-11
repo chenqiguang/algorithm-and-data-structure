@@ -76,7 +76,12 @@ public class ListNodeTest extends BaseUnitTest {
 
     }
 
-
+    @Test
+    public void testSwapPairs(){
+        ListNode node  = generateListNode(1,2,3,4);
+        ListNode listNode = listNodeUtil.swapPairs(node);
+        System.out.println(listNode);
+    }
 
 
 
