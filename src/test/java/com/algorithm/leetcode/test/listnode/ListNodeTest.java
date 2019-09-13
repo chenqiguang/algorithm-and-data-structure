@@ -83,6 +83,21 @@ public class ListNodeTest extends BaseUnitTest {
         System.out.println(listNode);
     }
 
+    @Test
+    public void testDeleteDuplicates(){
+        ListNode node = generateListNode(1,1,2,3,3);
+        ListNode node1 = listNodeUtil.deleteDuplicates(node);
+        System.out.println(node1);
+    }
+
+    @Test
+    public void testDeleteDuplicates2(){
+        ListNode node = generateListNode(1,1);
+        ListNode node1 = listNodeUtil.deleteDuplicates2(node);
+        System.out.println(node1);
+    }
+
+
 
 
 

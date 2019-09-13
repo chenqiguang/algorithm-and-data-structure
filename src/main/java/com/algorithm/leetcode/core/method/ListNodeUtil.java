@@ -212,6 +212,86 @@ public class ListNodeUtil {
         return root.next;
     }
 
+    /**
+     * 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
+     * 示例 1:
+     *
+     * 输入: 1->1->2
+     * 输出: 1->2
+     * 示例 2:
+     *
+     * 输入: 1->1->2->3->3
+     * 输出: 1->2->3
+     *
+     * 删除重复的节点
+     * @param head
+     * @return
+     */
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head==null){
+            return head;
+        }
+        ListNode cusuor = head;
+        while (cusuor.next!=null){
+            if (cusuor.val == cusuor.next.val){
+                cusuor.next = cusuor.next.next;
+                continue;
+            }
+            cusuor = cusuor.next;
+        }
+
+        return head;
+    }
+
+    /**
+     * 给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字。
+     *
+     * 输入: 1->2->3->3->4->4->5
+     * 输出: 1->2->5
+     * 示例 2:
+     *
+     * 输入: 1->1->1->2->3
+     * 输出: 2->3
+     *
+     * 删除排序链表中的重复元素 II
+     * @param head
+     * @return
+     */
+    public ListNode deleteDuplicates2(ListNode head) {
+        if (head==null || head.next==null){
+            return head;
+        }
+        ListNode cusuor = head;
+        ListNode pre = new ListNode(0);
+        pre.next = cusuor;
+        while (cusuor!=null && cusuor.next!=null){
+            if (cusuor.val == cusuor.next.val){
+                pre.next = cusuor.next.next;
+                cusuor = cusuor.next.next;
+                continue;
+            }
+            pre = cusuor;
+            cusuor = cusuor.next;
+        }
+
+        return head;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
