@@ -109,6 +109,13 @@ public class ListNodeTest extends BaseUnitTest {
 
     }
 
+    @Test
+    public void testPartition(){
+        ListNode node = generateListNode(1,4,3,2,5,2);
+        ListNode partition = listNodeUtil.partition(node, 3);
+        System.out.println(partition);
+    }
+
 
 
 
