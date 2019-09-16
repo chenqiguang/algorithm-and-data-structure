@@ -97,7 +97,17 @@ public class ListNodeTest extends BaseUnitTest {
         System.out.println(node1);
     }
 
+    @Test
+    public void testRotateRight(){
+        ListNode node1 = generateListNode(1,2,3,4,5);
+//        ListNode node2 = generateListNode(1,2);
 
+        ListNode rotateRight = listNodeUtil.rotateRight(node1, 2);
+//        ListNode rotateRight1 = listNodeUtil.rotateRight(node2, 1);
+        System.out.println(rotateRight);
+//        System.out.println(rotateRight1);
+
+    }
 
 
 
