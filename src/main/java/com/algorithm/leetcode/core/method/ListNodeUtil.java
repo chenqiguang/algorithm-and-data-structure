@@ -352,15 +352,15 @@ public class ListNodeUtil {
 
         while (cusuor!=null){
             if (cusuor.val < x){
-                tempPre.next = cusuor;
+                tempPre.next = new ListNode(cusuor.val);
                 tempPre = tempPre.next;
             }else {
-                tempSuffix.next = cusuor;
+                tempSuffix.next = new ListNode(cusuor.val);
                 tempSuffix = tempSuffix.next;
             }
             cusuor = cusuor.next;
         }
-        root.next = suffix.next;
+        tempPre.next = suffix.next;
         return root.next;
     }
 
