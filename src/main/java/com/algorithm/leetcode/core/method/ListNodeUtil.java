@@ -1,6 +1,7 @@
 package com.algorithm.leetcode.core.method;
 
 import com.algorithm.leetcode.core.model.ListNode;
+import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -379,11 +380,67 @@ public class ListNodeUtil {
      * @return
      */
     public ListNode reverseBetween(ListNode head, int m, int n) {
+        if (m==n){
+            return head;
+        }
+        ListNode cusuor = head;
 
+        ListNode pre = new ListNode(0);
+        ListNode pre_cusuor = pre;
 
-        return null;
+        ListNode reverseHead = new ListNode(0);
+        ListNode reverseHead_cusuor = reverseHead;
+
+        ListNode suf = new ListNode(0);
+        ListNode suf_cusuor = suf;
+        for (int i=0;cusuor!=null;i++){
+            if (i<m-1){
+                pre_cusuor.next = cusuor;
+                pre_cusuor = pre_cusuor.next;
+            }else
+            if (i>= m-1 && i<=n-1){
+                reverseHead_cusuor.next = cusuor;
+                reverseHead_cusuor = reverseHead_cusuor.next;
+            }else {
+                suf_cusuor.next = cusuor;
+                suf_cusuor = suf_cusuor.next;
+            }
+
+            cusuor = cusuor.next;
+        }
+        suf_cusuor.next = null;
+        reverseHead_cusuor.next = null;
+        pre_cusuor.next = null;
+
+        ListNode new_head = reverseNode(reverseHead.next,pre,suf.next);
+        return new_head;
     }
 
+    private ListNode reverseNode(ListNode head,ListNode pre,ListNode suf){
+        ListNode reverse_pre = head;
+        ListNode cusuor = head.next;
+        ListNode next = null;
+        while (cusuor!=null){
+            next = cusuor.next;
+            cusuor.next = reverse_pre;
+            reverse_pre = cusuor;
+            cusuor = next;
+        }
+        head.next = null;
+
+        ListNode reverse_pre_cusuor =reverse_pre;
+        for (;reverse_pre_cusuor.next!=null;){
+            reverse_pre_cusuor = reverse_pre_cusuor.next;
+        }
+        reverse_pre_cusuor.next = suf;
+
+        ListNode pre_cusuor = pre;
+        for (;pre_cusuor.next!=null;){
+            pre_cusuor = pre_cusuor.next;
+        }
+        pre_cusuor.next = reverse_pre;
+        return pre.next;
+    }
 
 
 

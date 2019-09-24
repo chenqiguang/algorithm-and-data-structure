@@ -116,6 +116,12 @@ public class ListNodeTest extends BaseUnitTest {
         System.out.println(partition);
     }
 
+    @Test
+    public void testReverseBetween(){
+        ListNode node = generateListNode(1,2,3,4,5);
+        ListNode node1 = listNodeUtil.reverseBetween(node, 2, 4);
+        System.out.println(node1);
+    }
 
 
 
