@@ -459,10 +459,63 @@ public class ListNodeUtil {
      * @return
      */
     public TreeNode sortedListToBST(ListNode head) {
+//        int size;
+//        ListNode cusuor = head;
+//        for (size=1;head.next!=null;size++){
+//            cusuor = cusuor.next;
+//        }
+//        int index = ((size / 2) + 1);
+//
+//        cusuor = head;
+//        for (int i=0;i<index;i++){
+//            cusuor = cusuor.next;
+//        }
+//        ListNode root = cusuor;
+//        ListNode right = cusuor.next;
+//        ListNode left = head;
+//        cusuor.next = null;
+//
+//        TreeNode treeNode = new TreeNode(root.val);
+//        ListNode left_cusuor = left;
+//        TreeNode treeNode_left_cusuor;
+//        while (left_cusuor!=null){
+//            treeNode_left_cusuor.left = new TreeNode(left_cusuor.val);
+//            left_cusuor = left_cusuor.next;
+//            treeNode_left_cusuor = treeNode_left_cusuor.left;
+//        }
+
+
 
         return null;
     }
 
+    /**
+     *给定一个链表，判断链表中是否有环。
+     * 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
+     * 示例 1：
+     *
+     * 输入：head = [3,2,0,-4], pos = 1
+     * 输出：true
+     * 解释：链表中有一个环，其尾部连接到第二个节点。
+     *
+     * @param head
+     * @return
+     */
+    public boolean hasCycle(ListNode head) {
+        if (head==null){
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (slow!=null && fast!=null && fast.next!=null){
+            if (slow ==fast){
+                return true;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return false;
+    }
 
 
 
