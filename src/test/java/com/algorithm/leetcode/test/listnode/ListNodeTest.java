@@ -143,4 +143,23 @@ public class ListNodeTest extends BaseUnitTest {
     }
 
 
+    @Test
+    public void testHasCycle2(){
+        ListNode node = generateListNode(3,2,0,4);
+        int pos = 1;
+        ListNode cusuor = node;
+        for (int i=0;i<pos;i++){
+            cusuor = cusuor.next;
+        }
+        ListNode cusuor1 = node;
+        for (;cusuor1.next!=null;){
+            cusuor1 = cusuor1.next;
+        }
+
+        cusuor1.next = cusuor;
+
+        ListNode detectCycle = listNodeUtil.detectCycle(node);
+        System.out.println(detectCycle);
+    }
+
 }
