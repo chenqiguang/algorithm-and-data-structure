@@ -1,6 +1,7 @@
 package com.algorithm.leetcode.core.method;
 
 import com.algorithm.leetcode.core.model.ListNode;
+import com.algorithm.leetcode.core.model.Node;
 import com.algorithm.leetcode.core.model.TreeNode;
 import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 import org.springframework.stereotype.Component;
@@ -572,9 +573,20 @@ public class ListNodeUtil {
     public void reorderList(ListNode head) {
 
 
-
     }
 
+    /**
+     * 复制带随机指针的链表
+     * 给定一个链表，每个节点包含一个额外增加的随机指针，该指针可以指向链表中的任何节点或空节点。
+     * 要求返回这个链表的深拷贝。
+     *
+     *  @param head
+     * @return
+     */
+    public Node copyRandomList(Node head) {
+
+        return null;
+    }
 
 
 
