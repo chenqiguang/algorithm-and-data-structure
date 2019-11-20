@@ -29,5 +29,12 @@ public class TreeNodeTest extends BaseUnitTest {
         System.out.println(list);
     }
 
+    @Test
+    public void testNumTrees(){
+        int i = treeNodeUtil.numTrees(5);
+
+        System.out.println(i);
+    }
+
 
 }
