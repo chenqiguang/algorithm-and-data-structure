@@ -32,8 +32,20 @@ public class TreeNodeTest extends BaseUnitTest {
     @Test
     public void testNumTrees(){
         int i = treeNodeUtil.numTrees(5);
-
         System.out.println(i);
+    }
+
+    @Test
+    public void testisValidBST(){
+        TreeNode root = new TreeNode(10);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(15);
+        root.left.left = null;
+        root.left.right = null;
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(20);
+        boolean validBST = treeNodeUtil.isValidBST(root);
+        System.out.println("testisValidBST : "+validBST);
     }
 
 
